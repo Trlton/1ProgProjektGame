@@ -1,6 +1,7 @@
 from pygame import *
+import constants
 
-class gameObejct :
+class gameObejct(maxSpeed,width,height,color) :
     xSpeed = 0
     ySpeed = 0
     maxSpeed = 0
@@ -19,23 +20,12 @@ class gameObejct :
         if currentHealth > maxHealth:
             currentHealth = maxHealth
 
+    def __init__(self,screen, xpos, ypos, width, height):
+        self.rect = pygame.Rect(xpos,ypos,width,height)
+        self.rect.center = (xpos,ypos)
 
-    def __init__(self,screen,xpos,ypos):
-        self.x = xpos
-        self.y = ypos
-        self.gameWidget = screen
-        self.screenWidth = self.gameWidget.get_size()[0]
-        self.screenHeight = self.theScreen.get_size()[1]
-
-
-    def hitbox(self):
-        pygame.Rect()
-
-    def update(self):
-        self.x+=self.xSpeed
-        self.y+=self.ySpeed
-
-
+    def draw(self,screen, hitboxColor):
+        pygame.draw.rect(screen, (hitboxC0olor), self.rect)
 
 
 
