@@ -1,7 +1,7 @@
 from pygame import *
 import constants
 
-class gameObejct(maxSpeed,width,height,color) :
+class gameObejct :
     xSpeed = 0
     ySpeed = 0
     maxSpeed = 0
