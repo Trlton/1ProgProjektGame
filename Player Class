@@ -7,7 +7,7 @@ class player(gameObejct):
     # Player values
     widthHitbox = 0
     heightHitbox = 0
-    maxHealth = playerMaxHealth
+    #playerMaxHealth = HP
     currentHealth = maxHealth
 
 
@@ -25,14 +25,22 @@ class player(gameObejct):
         if keys[downBinding]:
             self.acc.y = 1
 
-        self.vel += self.acc
-        self.pos += self.vel
-
-        #Diagonal movement fix (so its not faster going diagonal)
         if self.acc.length_squared() > 0:
             self.acc.normalize_ip()
 
         self.vel *= playerMaxSpeed
+
+        self.vel += self.acc
+        self.pos += self.vel
+
+        # Wrap around the screen
+        self.pos.x %= SCREEN_WIDTH
+        self.pos.y %= SCREEN_HEIGHT
+
+        # Update player position
+        self.rect.center = self.pos
+
+        #Diagonal movement fix (so its not faster going diagonal)
 
 
 
