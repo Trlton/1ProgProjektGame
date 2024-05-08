@@ -3,41 +3,52 @@ from SpriteParrentClass import gameObejct
 from constants import *
 from pygame import *
 
-class player(gameObejct) :
-    #Player values
-    maxSpeed = playerMaxSpeed
+class player(gameObejct):
+    # Player values
     widthHitbox = 0
     heightHitbox = 0
     maxHealth = playerMaxHealth
     currentHealth = maxHealth
 
-### ### Player movement ### ###
 
-    #SETUP PLAYER MOVEMENT VARIABLES
-    moveUp = false
-    moveDown = false
-    moveLeft = false
-    moveRight = false
+    def updatePlayer(self):
+        self.acc = Vector2(0, 0)
+
+        # Check input and set acceleration
+        keys = pygame.key.get_pressed()
+        if keys[leftBinding]:
+            self.acc.x = -1
+        if keys[rightBinding]:
+            self.acc.x = 1
+        if keys[upBinding]:
+            self.acc.y = -1
+        if keys[downBinding]:
+            self.acc.y = 1
+
+        self.vel += self.acc
+        self.pos += self.vel
+
+        #Diagonal movement fix (so its not faster going diagonal)
+        if self.acc.length_squared() > 0:
+            self.acc.normalize_ip()
+
+        self.vel *= playerMaxSpeed
 
 
-    #PLAYER MOVEMENT key pressed
-    if event.type == pygame.KEYDOWN :
-        if event.type == upBinding :
-            moveUp = true
-        if event.type == downBinding :
-            moveDown = true
-        if event.type == leftBinding :
-            moveLeft = true
-        if event.type == rightBinding :
-            moveRIGHT = true
 
-    # PLAYER MOVEMENT key no longer pressed
-    if event.type == pygame.KEYUP:
-        if event.type == upBinding:
-            moveUp = false
-        if event.type == downBinding:
-            moveDown = false
-        if event.type == leftBinding :
-            moveLeft = false
-        if event.type == rightBinding :
-            moveRIGHT = false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
