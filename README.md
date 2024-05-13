@@ -11,4 +11,4 @@ Player model:
 
 Klassediagrammer:
 
-<img width="1017" height="119" alt="Class diagram" src="https://github.com/Trlton/1ProgProjektGame/blob/main/class%20diagram.png">
+<img alt="Class diagram" src="https://github.com/Trlton/1ProgProjektGame/blob/main/class%20diagram.png">
