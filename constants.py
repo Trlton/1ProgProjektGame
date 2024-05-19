@@ -24,6 +24,8 @@ GAME_TITLE = "__main__"
 playerMaxSpeed = 10
 playerMaxHealth = 10
 
+playerHitboxHeight = 50
+playerHitboxWidth = 50
 
     #Control bindings
         #Movement
