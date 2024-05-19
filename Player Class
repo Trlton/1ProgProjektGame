@@ -1,12 +1,28 @@
 import pygame
-from pygame import *
 from pygame.math import Vector2
 import constants as game_constants
+
+class gameObject:
+    xSpeed = 0
+    ySpeed = 0
+    widthHitbox = 0
+    heightHitbox = 0
+    maxHealth = 0
+    currentHealth = 0
+
+    def healthChange(self, maxHealth, currentHealth, damage):
+        # Damages or heals entity based on how much damage the damage source deals.
+        # Negative damage = healing
+        currentHealth -= damage
+        print(currentHealth)
+        if currentHealth > maxHealth:
+            currentHealth = maxHealth
 
 
 class player(gameObject):
     def __init__(self, screen, xpos, ypos, width, height):
-        super().__init__(screen, xpos, ypos, width, height)
+        super().__init__()
+        self.rect = pygame.Rect(xpos, ypos, width, height)
         self.pos = Vector2(xpos, ypos)
         self.vel = Vector2(0, 0)
         self.acc = Vector2(0, 0)
@@ -31,7 +47,7 @@ class player(gameObject):
             self.acc = self.acc.normalize()
 
         self.acc *= game_constants.playerMaxSpeed
-        self.pos += self.vel + self.acc
+        self.pos += self.acc
 
         # Update player position
         self.rect.center = self.pos
