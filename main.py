@@ -63,3 +63,22 @@ while running:
     clock.tick(game_constants.FPS)
 
 pygame.quit()
+
+    # Update player
+    player_object.updatePlayer()
+
+    # Update camera
+    camera.update(player_object)
+
+    # draw functions
+    gameScreen.fill(game_constants.BLACK)
+    draw_checkered_background(gameScreen, 50, camera)
+    player_object.draw(gameScreen, game_constants.RED, camera)
+
+    # Update the display
+    pygame.display.flip()
+
+    # Cap the frame rate
+    clock.tick(game_constants.FPS)
+
+pygame.quit()

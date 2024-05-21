@@ -5,7 +5,6 @@ import constants
 class GameObejct:
     xSpeed = 0
     ySpeed = 0
-    maxSpeed = 0
     widthHitbox = 0
     heightHitbox = 0
     maxHealth = 0
@@ -17,7 +16,6 @@ class GameObejct:
         #Damages or heals entity based on how much damage the damage source deals.
         #Negative damage = healing
         currentHealth -= damage
-        print(currentHealth)
         if currentHealth > maxHealth:
             currentHealth = maxHealth
 
@@ -27,4 +25,46 @@ class GameObejct:
 
     def draw(self,screen, hitboxColor):
         pygame.draw.rect(screen, (hitboxC0olor), self.rect)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
