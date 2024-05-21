@@ -1,15 +1,18 @@
 import pygame.event
 
+# Surface = gameScreen
+
 # Framerate
 FPS = 60
 
 # Screen Reolution
-SCREEN_HEIGHT = 1080
+resolution = (1920,1080) # monitor resolution (width, height)
 SCREEN_WIDTH = 1920
+SCREEN_HEIGHT = 1080
 
 # Playspace
 gameWidth = 2500
-gameHeight = 2500
+gameHeight = 1580
 
 # Colors
 BLACK = (0, 0, 0)
@@ -21,6 +24,8 @@ RED = (255,0,0)
 GAME_TITLE = "__main__"
 
 #PLAYER values
+playerPNG = "midlertidigPlayerPNG.png"
+
 playerMaxSpeed = 10
 playerMaxHealth = 10
 
@@ -34,5 +39,6 @@ downBinding = pygame.K_s
 leftBinding = pygame.K_a
 rightBinding = pygame.K_d
 
-
 diagonal_movement_multiplier = 0,71
+
+        #Shooting bindings
