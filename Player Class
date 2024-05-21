@@ -1,44 +1,52 @@
-import pygame.event
+import pygame
+from pygame.math import Vector2
+import constants as game_constants
 
-# Surface = gameScreen
+class gameObject:
+    xSpeed = 0
+    ySpeed = 0
+    widthHitbox = 0
+    heightHitbox = 0
+    maxHealth = 0
+    currentHealth = 0
 
-# Framerate
-FPS = 60
 
-# Screen Reolution
-resolution = (1920,1080) # monitor resolution (width, height)
-SCREEN_WIDTH = 1920
-SCREEN_HEIGHT = 1080
 
-# Playspace
-gameWidth = 2500
-gameHeight = 1580
+class player(gameObject):
+    def __init__(self, screen, xpos, ypos, width, height):
+        super().__init__()
+        self.rect = pygame.Rect(xpos, ypos, width, height)
+        self.pos = Vector2(xpos, ypos)
+        self.vel = Vector2(0, 0)
+        self.acc = Vector2(0, 0)
+        self.currentHealth = game_constants.playerMaxHealth
+        self.screen = screen
+        self.image = pygame.image.load(game_constants.playerPNG).convert_alpha()
 
-# Colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GRAY = (200, 200, 200)
-RED = (255,0,0)
+    def updatePlayer(self):
+        self.acc = Vector2(0, 0)
 
-# Game Title
-GAME_TITLE = "__main__"
+        # Check input and set acceleration via vector
+        keys = pygame.key.get_pressed()
+        if keys[game_constants.leftBinding]:
+            self.acc.x = -1
+        if keys[game_constants.rightBinding]:
+            self.acc.x = 1
+        if keys[game_constants.upBinding]:
+            self.acc.y = -1
+        if keys[game_constants.downBinding]:
+            self.acc.y = 1
 
-#PLAYER values
-playerPNG = "midlertidigPlayerPNG.png"
+        if self.acc.length_squared() > 0:
+            self.acc = self.acc.normalize()
 
-playerMaxSpeed = 10
-playerMaxHealth = 10
+        self.acc *= game_constants.playerMaxSpeed
+        self.pos += self.acc
 
-playerHitboxHeight = 50
-playerHitboxWidth = 50
+        # Update player position
+        self.rect.center = self.pos
 
-    #Control bindings
-        #Movement
-upBinding = pygame.K_w
-downBinding = pygame.K_s
-leftBinding = pygame.K_a
-rightBinding = pygame.K_d
 
-diagonal_movement_multiplier = 0,71
-
-        #Shooting bindings
+    def draw(self, screen, hitboxColor, camera):
+        adjusted_rect = self.rect.move(camera.camera.topleft)
+        screen.blit(self.image, adjusted_rect)
