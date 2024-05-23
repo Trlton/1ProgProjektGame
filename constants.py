@@ -39,12 +39,6 @@ downBinding = pygame.K_s
 leftBinding = pygame.K_a
 rightBinding = pygame.K_d
 
-diagonal_movement_multiplier = 0.71
-
-playerAcceleration = 0.9
+diagonal_movement_multiplier = 0,71
 
         #Shooting bindings
-spacebinding = pygame.K_SPACE
-
-        #General bindings
-escBinding = pygame.K_ESCAPE

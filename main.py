@@ -18,6 +18,11 @@ clock = pygame.time.Clock()
 player_object = Player(gameScreen,
                        game_constants.SCREEN_WIDTH // 2,
                        game_constants.SCREEN_HEIGHT // 2,
+
+# use player object
+player_object = player(gameScreen,
+                       game_constants.gameWidth // 2,
+                       game_constants.gameHeight // 2,
                        game_constants.playerHitboxWidth,
                        game_constants.playerHitboxHeight)
 
@@ -70,6 +75,18 @@ while running:
     Enemy.draw()
 
     # Update the display
+    # Update player
+    player_object.updatePlayer()
+
+    # Update camera onto player
+    camera.update(player_object)
+
+    # draw functions stuff
+    gameScreen.fill(game_constants.BLACK)
+    draw_checkered_background(gameScreen, 100, camera)
+    player_object.draw(gameScreen, game_constants.RED, camera)
+
+    # update display
     pygame.display.flip()
 
     # Cap the frame rate
