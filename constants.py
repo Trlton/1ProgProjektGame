@@ -11,8 +11,8 @@ SCREEN_WIDTH = 1920
 SCREEN_HEIGHT = 1080
 
 # Playspace
-gameWidth = 2500
-gameHeight = 1580
+GAME_WIDTH = 2500
+GAME_HEIGHT = 1580
 
 # Colors
 BLACK = (0, 0, 0)
@@ -24,8 +24,11 @@ RED = (255,0,0)
 GAME_TITLE = "__main__"
 
 #PLAYER values
-playerPNG = "midlertidigPlayerPNG.png"
-
+playerPNG = "andreTateBaseModel.png"
+playerLeftPNG = "andreTateBaseModel.png"
+playerRightPNG = "andreTateBaseModel.png"
+playerUpPNG = "andreTateBaseModel.png"
+playerDownPNG = "andreTateBaseModel.png"
 playerMaxSpeed = 10
 playerMaxHealth = 10
 
@@ -42,3 +45,6 @@ rightBinding = pygame.K_d
 diagonal_movement_multiplier = 0,71
 
         #Shooting bindings
+
+
+
