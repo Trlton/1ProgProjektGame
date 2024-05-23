@@ -30,6 +30,21 @@ player_object = player(gameScreen,
 camera = Camera(game_constants.gameWidth,
                 game_constants.gameHeight)
 
+# Create block objects with paths to the PNG images
+block_size = 50  # Assuming each block is 50x50 pixels
+block_image_path = 'Square_Block.png'
+blocks = []
+
+# Create a barrier of blocks around the map
+for x in range(0, game_constants.gameWidth, block_size):
+    blocks.append(BlockClass(x, 180, block_size, block_size, block_image_path))  # Top edge
+    blocks.append(BlockClass(x, game_constants.gameHeight - 180 - block_size, block_size, block_size, block_image_path))  # Bottom edge
+
+for y in range(0, game_constants.gameHeight, block_size):
+    blocks.append(BlockClass(320, y, block_size, block_size, block_image_path))  # Left edge
+    blocks.append(BlockClass(game_constants.gameWidth - 320 - block_size, y, block_size, block_size, block_image_path))  # Right edge
+
+
 # Create an enemy object
 Enemy = Enemyboi(gameScreen,
               100, 100,
@@ -76,7 +91,7 @@ while running:
 
     # Update the display
     # Update player
-    player_object.updatePlayer()
+    player_object.updatePlayer(blocks)
 
     # Update camera onto player
     camera.update(player_object)
@@ -86,6 +101,10 @@ while running:
     draw_checkered_background(gameScreen, 100, camera)
     player_object.draw(gameScreen, game_constants.RED, camera)
 
+    # Draw blocks
+    for block in blocks:
+        block.draw(gameScreen, camera)
+  
     # update display
     pygame.display.flip()
 
