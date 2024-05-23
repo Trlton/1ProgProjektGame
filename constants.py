@@ -11,8 +11,8 @@ SCREEN_WIDTH = 1920
 SCREEN_HEIGHT = 1080
 
 # Playspace
-GAME_WIDTH = 2500
-GAME_HEIGHT = 1580
+gameWidth = 2500
+gameHeight = 1580
 
 # Colors
 BLACK = (0, 0, 0)
