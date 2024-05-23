@@ -12,7 +12,7 @@ class Enemyboi:
         self.maxSpeed = maxSpeed
 
         sprite_path = "Billedefolder/Singlerangedhenchman.png"
-#bør ændres
+#bør ændres nu
 class Enemycloserange():
     def __init__(self, screen, xpos, ypos, width, height, maxHealth, xSpeed, ySpeed, maxSpeed, sprite_path=None):
         super().__init__(screen, xpos, ypos, width, height, maxHealth, sprite_path)
