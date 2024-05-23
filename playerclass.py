@@ -10,13 +10,11 @@ class gameObject:
     maxHealth = 0
     currentHealth = 0
 
-    def healthChange(self, maxHealth, currentHealth, damage):
-        # Damages or heals entity based on how much damage the damage source deals.
-        # Negative damage = healing
-        currentHealth -= damage
-        print(currentHealth)
-        if currentHealth > maxHealth:
-            currentHealth = maxHealth
+    def healthChange(self, playermaxHealth, playercurrentHealth, damage):
+        playercurrentHealth -= damage
+        print(playercurrentHealth)
+        if playercurrentHealth > playermaxHealth:
+            playercurrentHealth = playermaxHealth
 
 
 class player(gameObject):

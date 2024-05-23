@@ -2,7 +2,7 @@ from pygame import *
 import constants
 
 
-def gameobjekt:
+def gameobjekt():
     class GameObejct:
         xSpeed = 0
         ySpeed = 0
@@ -27,7 +27,7 @@ def gameobjekt:
         self.rect.center = (xpos,ypos)
 
     def draw(self,screen, hitboxColor):
-        pygame.draw.rect(screen, (hitboxC0olor), self.rect)
+        pygame.draw.rect(screen, (hitboxColor), self.rect)
 
 
 

@@ -1,6 +1,6 @@
 
 def Enemyboi():
-    class Enemy(GameObject):
+    class Enemy():
         def __init__(self, screen, xpos, ypos, width, height, maxHealth, xSpeed, ySpeed, maxSpeed, sprite_path=None):
             super().__init__(screen, xpos, ypos, width, height, maxHealth, sprite_path)
             self.xenemy = xpos
@@ -9,8 +9,22 @@ def Enemyboi():
             self.ySpeed = ySpeed
             self.maxSpeed = maxSpeed
 
-            sprite_path = Singlerangedhenchman.png
+            sprite_path = "Billedefolder/Singlerangedhenchman.png"
 
+    class Enemycloserange():
+        def __init__(self, screen, xpos, ypos, width, height, maxHealth, xSpeed, ySpeed, maxSpeed, sprite_path=None):
+            super().__init__(screen, xpos, ypos, width, height, maxHealth, sprite_path)
+            self.xenemycloserange = xpos
+            self.yenemycloserange = ypos
+            self.xSpeed = xSpeed
+            self.ySpeed = ySpeed
+            self.maxSpeed = maxSpeed
+
+    def healthChangeenemy(self, enemymaxHealth, enemycurrentHealth, damage):
+        enemycurrentHealth -= damage
+        print(enemycurrentHealth)
+        if enemycurrentHealth > enemymaxHealth:
+            enemycurrentHealth = enemymaxHealth
 
     def move(self):
         self.rect.x += self.xSpeed
@@ -32,19 +46,28 @@ def Enemyboi():
 from Playerclasstest import player
 
 class CollisionDetector:
-    def __init__(self, player, enemy):
+    def __init__(self, player, enemy, enemyclose):
         self.player = player
         self.enemy = enemy
+        self.enemyclose = enemyclose
 
 
         def crash(self):
             if self.player.y < self.enemy.y:
                 if self.player.x < self.enemy.x or self.player.x > self.enemy.x:
                     if self.player.x < self.enemy.x_position:
-                        return True
+                        if self.player.y < self.enemyclose.y:
+                            if self.player.x < self.enemyclose.x or self.player.x > self.enemyclose.x:
+                                if self.player.x < self.enemyclose.x_position:
+                                    if self.enemy.x < self.enemyclose.x_position:
+                                        if self.enemy.y < self.enemyclose.y_position:
+                                            return True
+                                        enemycurrentHealth = self.currentHealth - 1
+                                        playercurrentHealth = player.currentHealth - 1
                     import SpriteParrentClass
-                    self.currentHealth=  self.currentHealth - 1
                     return False
 
-                    #gør det afhægigt af velocity
-                    # giv hp damage
+#gør det afhægigt af velocity
+# giv hp damage
+
+

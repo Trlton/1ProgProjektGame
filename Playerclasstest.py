@@ -1,30 +1,27 @@
+#bør virke
 import pygame
 from pygame.math import Vector2
 import constants as game_constants
-#bør virke
-class gameObject:
-    xSpeed = 0
-    ySpeed = 0
-    widthHitbox = 0
-    heightHitbox = 0
-    maxHealth = 0
-    currentHealth = 0
 
-    def healthChange(self, maxHealth, currentHealth, damage):
-        # Damages or heals entity based on how much damage the damage source deals.
-        # Negative damage = healing
-        currentHealth -= damage
-        print(currentHealth)
-        if currentHealth > maxHealth:
-            currentHealth = maxHealth
+class GameObject:
+    def __init__(self):
+        self.xSpeed = 0
+        self.ySpeed = 0
+        self.widthHitbox = 0
+        self.heightHitbox = 0
+        self.maxHealth = 0
+        self.currentHealth = 0
 
+    def healthChange(self, damage):
+        self.currentHealth -= damage
+        print(self.currentHealth)
+        if self.currentHealth > self.maxHealth:
+            self.currentHealth = self.maxHealth
 
-class player(gameObject):
+class Player(GameObject):
     def __init__(self, screen, xpos, ypos, width, height):
         super().__init__()
-        self.rect = pygame.Rect(width, height)
-        self.xplayer = xpos
-        self.yplayer = ypos
+        self.rect = pygame.Rect(xpos, ypos, width, height)
         self.pos = Vector2(xpos, ypos)
         self.vel = Vector2(0, 0)
         self.acc = Vector2(0, 0)
@@ -48,10 +45,18 @@ class player(gameObject):
         if self.acc.length_squared() > 0:
             self.acc = self.acc.normalize()
 
-        self.acc *= game_constants.playerMaxSpeed
-        self.pos += self.acc
+        self.acc *= game_constants.playerAcceleration
 
-        # Update player position
+        # Apply friction
+        self.vel *= 0.9
+
+        # Update velocity
+        self.vel += self.acc
+
+        # Update position
+        self.pos += self.vel + 0.5 * self.acc
+
+        # Update the rect position
         self.rect.center = self.pos
 
     def draw(self, screen, hitboxColor, camera):
