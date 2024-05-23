@@ -1,3 +1,4 @@
+import pygame
 from pygame import *
 import constants
 

@@ -3,6 +3,7 @@ from pygame.locals import *
 import constants as game_constants
 from Playerclasstest import Player
 from cameraClass import Camera
+from Enemyparrentclass import Enemyboi
 
 pygame.init()
 
@@ -24,6 +25,14 @@ player_object = Player(gameScreen,
 camera = Camera(game_constants.gameWidth,
                 game_constants.gameHeight)
 
+# Create an enemy object
+Enemy = Enemyboi(gameScreen,
+              100, 100,
+              game_constants.playerHitboxWidth, game_constants.playerHitboxHeight,
+              10,
+              2,
+              "Billedefolder/Singlerangedhenchman.png")
+
 # Testing grounds terrain - checkered playground
 def draw_checkered_background(surface, block_size, camera):
     for y in range(0, camera.height, block_size):
@@ -41,6 +50,9 @@ while running:
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
+        elif event.type == KEYDOWN:
+            if event.key == game_constants.escBinding:
+                running = False
 
     # Update player
     player_object.updatePlayer()
@@ -48,10 +60,14 @@ while running:
     # Update camera
     camera.update(player_object)
 
+    # Update enemy
+    Enemy.update(player_object.pos)
+
     # Draw functions
     gameScreen.fill(game_constants.BLACK)
     draw_checkered_background(gameScreen, 50, camera)
     player_object.draw(gameScreen, game_constants.RED, camera)
+    Enemy.draw()
 
     # Update the display
     pygame.display.flip()
