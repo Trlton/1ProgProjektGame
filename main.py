@@ -17,15 +17,15 @@ clock = pygame.time.Clock()
 
 # use player object
 player_object = player(gameScreen,
-                       game_constants.GAME_WIDTH // 2,
-                       game_constants.GAME_HEIGHT // 2,
+                       game_constants.gameWidth // 2,
+                       game_constants.gameHeight // 2,
                        game_constants.playerHitboxWidth,
                        game_constants.playerHitboxHeight)
 
 # make camera obejct:
                     # values are witdh and height of playspace
-camera = Camera(game_constants.GAME_WIDTH,
-                game_constants.GAME_HEIGHT)
+camera = Camera(game_constants.gameWidth,
+                game_constants.gameHeight)
 
 # testing grounds terrain - checkered playground
 def draw_checkered_background(surface, block_size, camera):
