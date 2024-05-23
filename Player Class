@@ -34,7 +34,7 @@ class player(gameObject):
         
         self.current_image = self.images["idle"]  # Set initial image to idle
 
-    def updatePlayer(self):
+    def updatePlayer(self, blocks):
         self.acc = Vector2(0, 0)
 
         # Check input and set image and acceleration
@@ -60,6 +60,23 @@ class player(gameObject):
 
         # Update player position
         self.rect.center = self.pos
+
+        # Handle collisions
+        self.handle_collisions(blocks)
+
+    def handle_collisions(self, blocks):
+        for block in blocks:
+            if self.rect.colliderect(block.rect):
+                if self.acc.x > 0:  # Moving right
+                    self.rect.right = block.rect.left
+                if self.acc.x < 0:  # Moving left
+                    self.rect.left = block.rect.right
+                if self.acc.y > 0:  # Moving down
+                    self.rect.bottom = block.rect.top
+                if self.acc.y < 0:  # Moving up
+                    self.rect.top = block.rect.bottom
+
+
 
     def draw(self, screen, hitboxColor, camera):
         adjusted_rect = self.rect.move(camera.camera.topleft)
