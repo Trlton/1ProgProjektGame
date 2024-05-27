@@ -1,6 +1,7 @@
 import pygame
 from pygame.math import Vector2
-import constants as game_constants
+
+
 class Enemyboi:
     def __init__(self, screen, xpos, ypos, width, height, maxHealth, maxSpeed, sprite_path=None):
         self.screen = screen
@@ -45,7 +46,7 @@ def update(self):
 def draw(self):
     super().draw()
 
-from Playerclasstest import Player
+from outdatedfiles.Playerclasstest import Player
 
 class CollisionDetector:
     def __init__(self, player, enemy, enemyclose):
@@ -66,7 +67,6 @@ class CollisionDetector:
                                         return True
                                     enemycurrentHealth = self.currentHealth - 1
                                     playercurrentHealth = Player.currentHealth - 1
-                import SpriteParrentClass
                 return False
 
 def move_towards_player(self, player_pos):

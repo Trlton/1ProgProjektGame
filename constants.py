@@ -24,14 +24,20 @@ RED = (255,0,0)
 GAME_TITLE = "__main__"
 
 #PLAYER values
-playerPNG = "midlertidigPlayerPNG.png"
-
+playerPNG = "andreTateBaseModel.png"
+playerLeftPNG = "andreTateBaseModel.png"
+playerRightPNG = "andreTateBaseModel.png"
+playerUpPNG = "andreTateBaseModel.png"
+playerDownPNG = "andreTateBaseModel.png"
 playerMaxSpeed = 10
 playerMaxHealth = 10
 
 playerHitboxHeight = 50
 playerHitboxWidth = 50
 
+bulletSpeed = 1
+bulletWidth = 100
+bulletHeight = 10
     #Control bindings
         #Movement
 upBinding = pygame.K_w
@@ -42,3 +48,6 @@ rightBinding = pygame.K_d
 diagonal_movement_multiplier = 0,71
 
         #Shooting bindings
+
+
+

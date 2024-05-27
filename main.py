@@ -1,8 +1,7 @@
-import pygame
+from pygame import *
 from pygame.locals import *
 import constants as game_constants
-from Playerclasstest import Player
-from cameraClass import Camera
+from outdatedfiles.Playerclasstest import Player
 from Enemyparrentclass import Enemyboi
 
 pygame.init()
@@ -24,7 +23,7 @@ player_object = player(gameScreen,
                        game_constants.gameWidth // 2,
                        game_constants.gameHeight // 2,
                        game_constants.playerHitboxWidth,
-                       game_constants.playerHitboxHeight)
+                       game_constants.playerHitboxHeight
 
 # Make camera object
 camera = Camera(game_constants.gameWidth,
