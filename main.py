@@ -1,6 +1,8 @@
+import pygame
 from pygame import *
 from pygame.locals import *
 import constants as game_constants
+import playerclass
 from outdatedfiles.Playerclasstest import Player
 from Enemyparrentclass import Enemyboi
 
@@ -13,17 +15,13 @@ pygame.display.set_caption(game_constants.GAME_TITLE)
 # Create clock for fps control
 clock = pygame.time.Clock()
 
-# Use player object
-player_object = Player(gameScreen,
-                       game_constants.SCREEN_WIDTH // 2,
-                       game_constants.SCREEN_HEIGHT // 2,
 
 # use player object
-player_object = player(gameScreen,
+player_object = playerclass.player(gameScreen,
                        game_constants.gameWidth // 2,
                        game_constants.gameHeight // 2,
                        game_constants.playerHitboxWidth,
-                       game_constants.playerHitboxHeight
+                       game_constants.playerHitboxHeight)
 
 # Make camera object
 camera = Camera(game_constants.gameWidth,
