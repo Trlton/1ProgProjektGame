@@ -1,10 +1,10 @@
 import pygame
-from pygame import *
 from pygame.locals import *
 import constants as game_constants
 import playerclass
-from outdatedfiles.Playerclasstest import Player
 from Enemyparrentclass import Enemyboi
+from cameraClass import Camera
+from Block import BlockClass
 
 pygame.init()
 
@@ -23,7 +23,9 @@ player_object = playerclass.player(gameScreen,
                        game_constants.playerHitboxWidth,
                        game_constants.playerHitboxHeight)
 
-# Make camera object
+
+# make camera obejct:
+                    # values are witdh and height of playspace
 camera = Camera(game_constants.gameWidth,
                 game_constants.gameHeight)
 
