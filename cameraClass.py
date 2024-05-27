@@ -1,9 +1,9 @@
-import pygame
+import pygame  
 import constants
 
 #This class makes the player centered - until player reaches the sides
 
-class Camera:
+class Camera: 
     def __init__(self, width, height):
         self.camera = pygame.Rect(0, 0, width, height)
         self.width = width
