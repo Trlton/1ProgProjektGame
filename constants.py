@@ -12,7 +12,7 @@ SCREEN_HEIGHT = 1080
 
 # Playspace
 gameWidth = 2500
-gameHeight = 1580
+gameHeight = 2000
 
 # Colors
 BLACK = (0, 0, 0)

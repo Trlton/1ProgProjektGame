@@ -17,9 +17,9 @@ class Camera:
         y = -target.rect.centery + int(constants.SCREEN_HEIGHT / 2)
 
         # Stop camera movement when reached sides / map end
-        x = min(0, x)  # left side
-        y = min(0, y)  # top side
-        x = max(-(self.width - constants.SCREEN_WIDTH), x)  # right side
-        y = max(-(self.height - constants.SCREEN_HEIGHT), y)  # bottom side
+        x = min(-130, x)  # left side
+        y = min(-80, y)  # top side
+        x = max(-(self.width - constants.SCREEN_WIDTH -130), x)  # right side
+        y = max(-(self.height - constants.SCREEN_HEIGHT -80), y)  # bottom side
 
         self.camera = pygame.Rect(x, y, self.width, self.height)
