@@ -35,14 +35,18 @@ block_image_path = 'Square_Block.png'
 blocks = []
 
 # Create a barrier of blocks around the map
-for x in range(0, game_constants.gameWidth, block_size):
-    blocks.append(BlockClass(x, 180, block_size, block_size, block_image_path))  # Top edge
-    blocks.append(BlockClass(x, game_constants.gameHeight - 180 - block_size, block_size, block_size, block_image_path))  # Bottom edge
+for xCoord in range(0, game_constants.gameWidth, block_size):
+    blocks.append(BlockClass(xCoord, 180, block_size, block_size, block_image_path))  # Top edge
+    blocks.append(BlockClass(xCoord, game_constants.gameHeight - 180 - block_size, block_size, block_size, block_image_path))  # Bottom edge
 
-for y in range(0, game_constants.gameHeight, block_size):
-    blocks.append(BlockClass(320, y, block_size, block_size, block_image_path))  # Left edge
-    blocks.append(BlockClass(game_constants.gameWidth - 320 - block_size, y, block_size, block_size, block_image_path))  # Right edge
+for yCoord in range(0, game_constants.gameHeight, block_size):
+    blocks.append(BlockClass(320, yCoord, block_size, block_size, block_image_path))  # Left edge
+    blocks.append(BlockClass(game_constants.gameWidth - 320 - block_size, yCoord, block_size, block_size, block_image_path))  # Right edge
 
+#Create block path that the player goes through in the map:
+for pathX in range (320+block_size, game_constants.gameWidth // 2):
+    blocks.append(BlockClass(pathX, game_constants.gameHeight // 3, block_size, block_size, block_image_path))  # Top edge
+    blocks.append(BlockClass(pathX, game_constants.gameHeight // 3 - block_size*4, block_size, block_size, block_image_path))  # Bottom edge
 
 # Create an enemy object
 Enemy = Enemyboi(gameScreen,
@@ -74,19 +78,19 @@ while running:
                 running = False
 
     # Update player
-    player_object.updatePlayer()
+    player_object.updatePlayer(blocks)
 
     # Update camera
     camera.update(player_object)
 
     # Update enemy
-    Enemy.update(player_object.pos)
+#    Enemy.update(player_object.pos)
 
     # Draw functions
     gameScreen.fill(game_constants.BLACK)
     draw_checkered_background(gameScreen, 50, camera)
-    player_object.draw(gameScreen, game_constants.RED, camera)
-    Enemy.draw()
+    player_object.draw(gameScreen, camera)
+#    Enemy.draw()
 
     # Update the display
     # Update player
@@ -98,7 +102,7 @@ while running:
     # draw functions stuff
     gameScreen.fill(game_constants.BLACK)
     draw_checkered_background(gameScreen, 100, camera)
-    player_object.draw(gameScreen, game_constants.RED, camera)
+    player_object.draw(gameScreen, camera)
 
     # Draw blocks
     for block in blocks:

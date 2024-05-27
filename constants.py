@@ -29,11 +29,11 @@ playerLeftPNG = "andreTateBaseModel.png"
 playerRightPNG = "andreTateBaseModel.png"
 playerUpPNG = "andreTateBaseModel.png"
 playerDownPNG = "andreTateBaseModel.png"
-playerMaxSpeed = 10
+playerMaxSpeed = 5
 playerMaxHealth = 10
 
-playerHitboxHeight = 50
-playerHitboxWidth = 50
+playerHitboxHeight = 133
+playerHitboxWidth = 66
 
 bulletSpeed = 1
 bulletWidth = 100
@@ -47,6 +47,7 @@ rightBinding = pygame.K_d
 
 diagonal_movement_multiplier = 0,71
 
+escBinding = pygame.K_ESCAPE
         #Shooting bindings
 
 
