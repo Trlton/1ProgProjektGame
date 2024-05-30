@@ -2,17 +2,8 @@ import pygame
 from pygame.math import Vector2
 import constants as game_constants
 
-class gameObject:
-    xSpeed = 0
-    ySpeed = 0
-    widthHitbox = 0
-    heightHitbox = 0
-    maxHealth = 0
-    currentHealth = 0
 
-
-
-class player(gameObject):
+class player():
 
 
     def __init__(self, screen, xpos, ypos, width, height):
