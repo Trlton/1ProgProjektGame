@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 import constants as game_constants
 import playerclass
-from Enemyparrentclass import Enemyboi
+from Enemyparrentclass import *
 from cameraClass import Camera
 from Block import BlockClass
 
