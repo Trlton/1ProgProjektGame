@@ -45,7 +45,7 @@ class Enemy(gameObject):
         adjusted_rect = self.rect.move(camera.camera.topleft)
         surface.blit(self.image, adjusted_rect)
 
-from Playerclasstest import player
+from playerclass import player
 
 class CollisionDetector:
     def __init__(self, player, enemy):
