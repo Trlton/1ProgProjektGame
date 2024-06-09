@@ -1,9 +1,11 @@
 import pygame
 from pygame.math import Vector2
+
+import Parrentclass
 import constants as game_constants
 
 
-class player():
+class player(Parrentclass.GameObejct):
 
 
     def __init__(self, screen, xpos, ypos, width, height):
